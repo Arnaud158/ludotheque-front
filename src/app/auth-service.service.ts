@@ -4,9 +4,9 @@ tap, throwError} from "rxjs";
 import {ANONYMOUS_USER, User} from "../models/user";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {UserInfo} from "../models/userInfo";
+//import {UserInfo} from "../models/userInfo";
 import {Router} from "@angular/router";
-import {RegisterRequest} from "../models/interface";
+import {RegisterRequest} from "../models/register-request";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 const httpOptions = {
@@ -25,20 +25,22 @@ export class AuthServiceService {
   public user$: Observable<User> = this.userSubject.asObservable();
   isLoggedIn$: Observable<boolean> = this.user$.pipe(map(user => !! user.id));
   isLoggedOut$: Observable<boolean> = this.isLoggedIn$.pipe(map(isLoggedIn => !isLoggedIn));
+  private user : User;
   constructor(private http: HttpClient,
     private snackbar: MatSnackBar,
     private router: Router) {
+      this.user = {id:-1, name:"init",email:"test@example.com"}
   }
 
   login(email: string, password: string): Observable<User> {
     return this.http.post<any>(`${environment.apiUrl}/login`, {email, password}, httpOptions)
       .pipe(map(rep => {
-      const user = {...rep.user, jwtToken: rep.authorisation.token};
-      this.userSubject.next(user);
-      return user;
+      this.user = {...rep.user, jwtToken: rep.authorisation.token};
+      this.userSubject.next(this.user);
+      return this.user;
     }),
     shareReplay(),
-      tap(() => this.snackbar.open(`Bienvenue, ${this.userValue.name}`, 'Close', {
+      tap(() => this.snackbar.open(`Bienvenue, ${this.user.name}`, 'Close', {
       duration: 2000, horizontalPosition: 'right',
       verticalPosition: 'top'
     })),
@@ -54,24 +56,39 @@ export class AuthServiceService {
 
   register(request: RegisterRequest): Observable<User> {
     return this.http.post<any>(`${environment.apiUrl}/register`, {
-    email: request.email,
-    name: request.name,
-    password: request.password}, httpOptions).pipe(map(rep => {
-    const user = {...rep.user, jwtToken: rep.authorisation.token};
-    this.userSubject.next(user);
-    this.snackbar.open(`Bienvenue, ${this.userValue.name}`,'Close', {
-    duration: 2000, horizontalPosition: 'right',verticalPosition: 'top'})
-    return user;
-  }),
-  shareReplay(),
-  catchError(err => {
-  console.log(err);
-  this.userSubject.next(ANONYMOUS_USER);
-  this.snackbar.open(`Enregistrement invalide ${err.error.message}`, 'Close', {
-  duration: 3000, horizontalPosition: 'right',
-  verticalPosition: 'top'
-})
-throw new Error(`register result : ${err}`)})
+      email: request.email,
+      name: request.name,
+      password: request.password}, httpOptions).pipe(map(rep => {
+      const user = {...rep.user, jwtToken: rep.authorisation.token};
+      this.userSubject.next(user);
+      this.snackbar.open(`Bienvenue, ${this.user.name}`,'Close', {
+      duration: 2000, horizontalPosition: 'right',verticalPosition: 'top'})
+      return user;
+    }),
+    shareReplay(),
+    catchError(err => {
+      console.log(err);
+      this.userSubject.next(ANONYMOUS_USER);
+      this.snackbar.open(`Enregistrement invalide ${err.error.message}`, 'Close', {
+      duration: 3000, horizontalPosition: 'right',
+      verticalPosition: 'top'
+    })
+    throw new Error(`register result : ${err}`)})
     )
   }
+
+  logout(): void {
+    const oldUser = this.user;
+    this.http.post<any>(`${environment.apiUrl}/logout`, {},
+    httpOptions).subscribe(user =>
+    this.snackbar.open(`A bientôt, ${oldUser.name}`, 'Close', {
+    duration: 2000, horizontalPosition: 'right',
+    verticalPosition: 'top'
+      })
+    );
+  this.userSubject.next(ANONYMOUS_USER);
+    
+    this.router.navigate(['/']);
+  }
 }
+
