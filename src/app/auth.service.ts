@@ -19,7 +19,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class AuthService {
 
   private userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(ANONYMOUS_USER);
   public user$: Observable<User> = this.userSubject.asObservable();
@@ -90,5 +90,5 @@ export class AuthServiceService {
     
     this.router.navigate(['/']);
   }
-}
+} // a tester, faire les composant vues.
 
