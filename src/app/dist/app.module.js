@@ -23,6 +23,7 @@ var form_field_1 = require("@angular/material/form-field");
 var card_1 = require("@angular/material/card");
 var snack_bar_1 = require("@angular/material/snack-bar");
 var login_component_1 = require("./login.component");
+var register_component_1 = require("./register.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -31,6 +32,7 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 app_component_1.AppComponent,
                 login_component_1.LoginComponent,
+                register_component_1.RegisterComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,

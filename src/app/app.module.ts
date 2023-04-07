@@ -16,11 +16,13 @@ import {MatCardModule} from '@angular/material/card';
 
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoginComponent } from './login.component';
+import { RegisterComponent } from './register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
