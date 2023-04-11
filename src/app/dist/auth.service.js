@@ -38,23 +38,20 @@ var AuthService = /** @class */ (function () {
         this.user$ = this.userSubject.asObservable();
         this.isLoggedIn$ = this.user$.pipe(rxjs_1.map(function (user) { return !!user.id; }));
         this.isLoggedOut$ = this.isLoggedIn$.pipe(rxjs_1.map(function (isLoggedIn) { return !isLoggedIn; }));
-        this.user = { id: -1, name: "init", email: "test@example.com" };
     }
     AuthService.prototype.login = function (email, password) {
         var _this = this;
         return this.http.post(environment_1.environment.apiUrl + "/login", { email: email, password: password }, httpOptions)
             .pipe(rxjs_1.map(function (rep) {
-            _this.user = __assign(__assign({}, rep.user), { jwtToken: rep.authorisation.token });
-            _this.userSubject.next(_this.user);
-            return _this.user;
-        }), rxjs_1.shareReplay(), rxjs_1.tap(function () { return _this.snackbar.open("Bienvenue, " + _this.user.name, 'Close', {
-            duration: 2000, horizontalPosition: 'right',
-            verticalPosition: 'top'
+            var user = __assign(__assign({}, rep.user), { jwtToken: rep.authorisation.token });
+            _this.userSubject.next(user);
+            return user;
+        }), rxjs_1.shareReplay(), rxjs_1.tap(function () { return _this.snackbar.open("Bienvenue sur votre compte!", 'Close', {
+            duration: 2000, horizontalPosition: 'right', verticalPosition: 'top'
         }); }), rxjs_1.catchError(function (err) {
             _this.userSubject.next(user_1.ANONYMOUS_USER);
             _this.snackbar.open('Connexion invalide', 'Close', {
-                duration: 2000, horizontalPosition: 'right',
-                verticalPosition: 'top'
+                duration: 2000, horizontalPosition: 'right', verticalPosition: 'top'
             });
             throw new Error("login result : " + err);
         }));
@@ -62,13 +59,16 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.register = function (request) {
         var _this = this;
         return this.http.post(environment_1.environment.apiUrl + "/register", {
+            login: request.login,
             email: request.email,
-            name: request.name,
+            nom: request.nom,
+            prenom: request.prenom,
+            pseudo: request.pseudo,
             password: request.password
         }, httpOptions).pipe(rxjs_1.map(function (rep) {
             var user = __assign(__assign({}, rep.user), { jwtToken: rep.authorisation.token });
             _this.userSubject.next(user);
-            _this.snackbar.open("Bienvenue, " + _this.user.name, 'Close', {
+            _this.snackbar.open("Bienvenue sur votre compte!", 'Close', {
                 duration: 2000, horizontalPosition: 'right', verticalPosition: 'top'
             });
             return user;
@@ -76,29 +76,39 @@ var AuthService = /** @class */ (function () {
             console.log(err);
             _this.userSubject.next(user_1.ANONYMOUS_USER);
             _this.snackbar.open("Enregistrement invalide " + err.error.message, 'Close', {
-                duration: 3000, horizontalPosition: 'right',
-                verticalPosition: 'top'
+                duration: 3000, horizontalPosition: 'right', verticalPosition: 'top'
             });
             throw new Error("register result : " + err);
         }));
     };
     AuthService.prototype.logout = function () {
         var _this = this;
-        var oldUser = this.user;
-        this.http.post(environment_1.environment.apiUrl + "/logout", {}, httpOptions).subscribe(function (user) {
+        var oldUser = this.userValue;
+        this.http.post(environment_1.environment.apiUrl + "/logout", {}, httpOptions)
+            .subscribe(function (user) {
             return _this.snackbar.open("A bient\u00F4t, " + oldUser.name, 'Close', {
-                duration: 2000, horizontalPosition: 'right',
-                verticalPosition: 'top'
+                duration: 2000, horizontalPosition: 'right', verticalPosition: 'top'
             });
         });
         this.userSubject.next(user_1.ANONYMOUS_USER);
         this.router.navigate(['/']);
     };
+    AuthService.prototype.getProfile = function () {
+        return this.http.get(environment_1.environment.apiUrl + "/me", httpOptions)
+            .pipe(rxjs_1.map(function (rep) { return rep.user; }), rxjs_1.catchError(function (err) { return rxjs_1.throwError(err); }));
+    };
+    Object.defineProperty(AuthService.prototype, "userValue", {
+        get: function () {
+            return this.userSubject.value;
+        },
+        enumerable: false,
+        configurable: true
+    });
     AuthService = __decorate([
         core_1.Injectable({
             providedIn: 'root'
         })
     ], AuthService);
     return AuthService;
-}()); // a tester, faire les composant vues.
+}());
 exports.AuthService = AuthService;

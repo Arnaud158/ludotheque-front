@@ -9,6 +9,7 @@ exports.__esModule = true;
 exports.AppModule = void 0;
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+var animations_1 = require("@angular/platform-browser/animations");
 var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
 var expansion_1 = require("@angular/material/expansion");
@@ -24,6 +25,8 @@ var card_1 = require("@angular/material/card");
 var snack_bar_1 = require("@angular/material/snack-bar");
 var login_component_1 = require("./login.component");
 var register_component_1 = require("./register.component");
+var http_1 = require("@angular/common/http");
+var auth_interceptor_1 = require("./auth.interceptor");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -32,7 +35,7 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 app_component_1.AppComponent,
                 login_component_1.LoginComponent,
-                register_component_1.RegisterComponent
+                register_component_1.RegisterComponent,
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -47,9 +50,14 @@ var AppModule = /** @class */ (function () {
                 forms_1.ReactiveFormsModule,
                 form_field_1.MatFormFieldModule,
                 input_1.MatInputModule,
-                card_1.MatCardModule
+                card_1.MatCardModule,
+                http_1.HttpClientModule,
+                animations_1.BrowserAnimationsModule
             ],
-            providers: [],
+            providers: [{
+                    provide: http_1.HTTP_INTERCEPTORS,
+                    useClass: auth_interceptor_1.AuthInterceptor, multi: true
+                },],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
