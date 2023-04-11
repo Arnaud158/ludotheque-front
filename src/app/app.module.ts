@@ -21,12 +21,15 @@ import { RegisterComponent } from './register.component';
 
 import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
+import {MatButtonModule} from "@angular/material/button";
+import { HeaderComponent } from './header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { AuthInterceptor } from './auth.interceptor';
     MatInputModule,
     MatCardModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,
