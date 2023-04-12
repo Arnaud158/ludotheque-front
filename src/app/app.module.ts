@@ -21,12 +21,14 @@ import { RegisterComponent } from './register.component';
 
 import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
+import { ListeJeuComponent } from './liste-jeu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    ListeJeuComponent,
   ],
   imports: [
     BrowserModule,
