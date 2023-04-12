@@ -13,10 +13,16 @@ var page_not_found_component_1 = require("./page-not-found.component");
 var login_component_1 = require("./login.component");
 var register_component_1 = require("./register.component");
 var app_component_1 = require("./app.component");
+var a_propos_component_1 = require("./a-propos/a-propos.component");
+var contact_component_1 = require("./contact/contact.component");
+var carte_jeu_component_1 = require("./carte-jeu/carte-jeu.component");
 var routes = [
     { path: '', component: app_component_1.AppComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'register', component: register_component_1.RegisterComponent },
+    { path: 'apropos', component: a_propos_component_1.AProposComponent },
+    { path: 'contact', component: contact_component_1.ContactComponent },
+    { path: 'jeux/:id', component: carte_jeu_component_1.CarteJeuComponent },
     { path: '**', component: page_not_found_component_1.PageNotFoundComponent },
 ];
 var AppRoutingModule = /** @class */ (function () {

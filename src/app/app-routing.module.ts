@@ -6,6 +6,7 @@ import { RegisterComponent } from './register.component';
 import { AppComponent } from './app.component';
 import {AProposComponent} from "./a-propos/a-propos.component";
 import {ContactComponent} from "./contact/contact.component";
+import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
 
 const routes: Routes = [
   {path: '', component: AppComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'apropos', component:AProposComponent},
   {path: 'contact', component:ContactComponent},
+  {path: 'jeux/:id', component: CarteJeuComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 

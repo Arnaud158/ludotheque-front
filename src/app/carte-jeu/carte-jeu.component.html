@@ -1,1 +1,25 @@
-<p>carte-jeu works!</p>
+<div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title><h3>{{jeu.id}}</h3></mat-card-title>
+    <mat-card-subtitle>{{jeu.nom}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{jeu.url_media}}" alt="Photo du jeu" style="align-self:center;">
+  <mat-card-content>
+    <p>Description :  {{jeu.description}} </p>
+
+    <p>Age minimum :  {{jeu.age_min}} </p>
+    <p>Langues :  {{jeu.langue}} </p>
+
+    <p>Joueurs Minimums : {{jeu.nombre_joueurs_min}}</p>
+    <p>Joueurs Maximum: {{ jeu.nombre_joueurs_max }} </p>
+    <p>Durée : {{jeu.duree_partie}} </p>
+
+    <p>Catégorie : {{jeu.categorie_id}}</p>
+    <p>Editeur : {{ jeu.editeur_id }} </p>
+    <p>Theme : {{jeu.theme_id}} </p>
+    
+  </mat-card-content>
+</mat-card>
+</div>
