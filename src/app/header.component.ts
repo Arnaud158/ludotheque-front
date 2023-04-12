@@ -20,8 +20,8 @@ import {User} from "../models/user";
           {{service.userValue.nom}}
           {{service.userValue.prenom}}
           {{service.userValue.avatar}}
+          <button mat-raised-button  routerLinkActive="mat-accent"  aria-label="List icon" [routerLink]="['/jeux']">Liste des jeux</button>
         </div>
-        <button mat-raised-button  routerLinkActive="mat-accent"  aria-label="List icon" [routerLink]="['/jeux']">Liste des jeux</button>
       </mat-toolbar>
   `,
   styles: [

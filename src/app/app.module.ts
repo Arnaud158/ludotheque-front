@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PiedPageComponent } from './pied-page/pied-page.component';
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
@@ -23,13 +24,20 @@ import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 import {MatButtonModule} from "@angular/material/button";
 import { HeaderComponent } from './header.component';
+import { ListeJeuComponent } from './liste-jeu.component';
+import { AProposComponent } from './a-propos/a-propos.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    PiedPageComponent,
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
+    ListeJeuComponent,
+    AProposComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
