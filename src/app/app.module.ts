@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PiedPageComponent } from './pied-page/pied-page.component';
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatListModule } from "@angular/material/list";
 import { MatIconModule } from "@angular/material/icon";
@@ -22,13 +23,19 @@ import { RegisterComponent } from './register.component';
 import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 import { ListeJeuComponent } from './liste-jeu.component';
+import {MatButtonModule} from "@angular/material/button";
+import { AProposComponent } from './a-propos/a-propos.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    PiedPageComponent,
     LoginComponent,
     RegisterComponent,
     ListeJeuComponent,
+    AProposComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +52,8 @@ import { ListeJeuComponent } from './liste-jeu.component';
     MatInputModule,
     MatCardModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,
