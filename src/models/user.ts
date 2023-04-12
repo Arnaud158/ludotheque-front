@@ -6,3 +6,5 @@ export interface User {
 }
 
 export const ANONYMOUS_USER = {id:-1,name:"anonymous_user",email:"anonymous@example.com"}
+
+//export const ANONYMOUS_USER: User = <User>{};

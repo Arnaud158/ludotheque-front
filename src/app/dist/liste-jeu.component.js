@@ -34,7 +34,7 @@ var ListeJeuComponent = /** @class */ (function () {
     ListeJeuComponent = __decorate([
         core_1.Component({
             selector: 'app-liste-jeu',
-            template: "\n  <div class=\"liste-personnes\">\n    <div class=\"div-table-personnes\">\n      <table mat-table [dataSource]=\"dataSource\">\n\n        <!-- nom Column -->\n        <ng-container matColumnDef=\"nom\">\n          <th mat-header-cell *matHeaderCellDef> #</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.nom}} </td>\n        </ng-container>\n\n        <!-- description Column -->\n        <ng-container matColumnDef=\"description\">\n          <th mat-header-cell *matHeaderCellDef>description</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.description}} </td>\n        </ng-container>\n\n        <!-- langue Column -->\n        <ng-container matColumnDef=\"langue\">\n          <th mat-header-cell *matHeaderCellDef>langue</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.langue}} </td>\n        </ng-container>\n\n        <!-- cat\u00E9gorie Column -->\n        <ng-container matColumnDef=\"categorie\">\n          <th mat-header-cell *matHeaderCellDef>cat\u00E9gorie</th>\n          <td mat-cell *matCellDef=\"let element\">\n            <mat-icon [routerLink]=\"['/personnes', element.categorie]\">loupe</mat-icon>\n          </td>\n        </ng-container>\n\n        <!-- th\u00E8me Column -->\n        <ng-container matColumnDef=\"theme\">\n          <th mat-header-cell *matHeaderCellDef>Th\u00E8me</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.theme}} </td>\n        </ng-container>\n\n        <!-- La ligne -->\n        <tr mat-header-row *matHeaderRowDef=\"lesColonnes; sticky: true\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: lesColonnes;\"></tr>\n      </table>\n    </div>\n  </div>\n",
+            template: "\n  <div class=\"liste-personnes\">\n    <div class=\"div-table-personnes\">\n      <table mat-table [dataSource]=\"dataSource\">\n\n        <!-- nom Column -->\n        <ng-container matColumnDef=\"nom\">\n          <th mat-header-cell *matHeaderCellDef>Jeu</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.nom}} </td>\n        </ng-container>\n\n        <!-- description Column -->\n        <ng-container matColumnDef=\"description\">\n          <th mat-header-cell *matHeaderCellDef>Description</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.description}} </td>\n        </ng-container>\n\n        <!-- langue Column -->\n        <ng-container matColumnDef=\"langue\">\n          <th mat-header-cell *matHeaderCellDef>Langue</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.langue}} </td>\n        </ng-container>\n\n        <!-- cat\u00E9gorie Column -->\n        <ng-container matColumnDef=\"categorie\">\n          <th mat-header-cell *matHeaderCellDef>Cat\u00E9gorie</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.categorie_id}}</td>\n        </ng-container>\n\n        <!-- th\u00E8me Column -->\n        <ng-container matColumnDef=\"theme\">\n          <th mat-header-cell *matHeaderCellDef>Th\u00E8me</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.theme_id}} </td>\n        </ng-container>\n\n        <!-- La ligne -->\n        <tr mat-header-row *matHeaderRowDef=\"lesColonnes; sticky: true\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: lesColonnes;\"></tr>\n      </table>\n    </div>\n  </div>\n",
             styles: []
         })
     ], ListeJeuComponent);
@@ -56,10 +56,8 @@ var DataSourceAsynchro = /** @class */ (function (_super) {
     DataSourceAsynchro.prototype.disconnect = function () {
         this.jeuSubject.complete();
     };
-    DataSourceAsynchro.prototype.setData = function (sort, horsLimite) {
+    DataSourceAsynchro.prototype.setData = function () {
         var _this = this;
-        if (sort === void 0) { sort = 0; }
-        if (horsLimite === void 0) { horsLimite = false; }
         this.jeuService.getJeux()
             .subscribe(function (jeux) { return _this.jeuSubject.next(jeux); });
     };

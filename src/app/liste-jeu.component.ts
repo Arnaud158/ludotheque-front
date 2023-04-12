@@ -13,34 +13,32 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
         <!-- nom Column -->
         <ng-container matColumnDef="nom">
-          <th mat-header-cell *matHeaderCellDef> #</th>
+          <th mat-header-cell *matHeaderCellDef>Jeu</th>
           <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
         </ng-container>
 
         <!-- description Column -->
         <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef>description</th>
+          <th mat-header-cell *matHeaderCellDef>Description</th>
           <td mat-cell *matCellDef="let element"> {{element.description}} </td>
         </ng-container>
 
         <!-- langue Column -->
         <ng-container matColumnDef="langue">
-          <th mat-header-cell *matHeaderCellDef>langue</th>
+          <th mat-header-cell *matHeaderCellDef>Langue</th>
           <td mat-cell *matCellDef="let element"> {{element.langue}} </td>
         </ng-container>
 
         <!-- catégorie Column -->
         <ng-container matColumnDef="categorie">
-          <th mat-header-cell *matHeaderCellDef>catégorie</th>
-          <td mat-cell *matCellDef="let element">
-            <mat-icon [routerLink]="['/personnes', element.categorie]">loupe</mat-icon>
-          </td>
+          <th mat-header-cell *matHeaderCellDef>Catégorie</th>
+          <td mat-cell *matCellDef="let element"> {{element.categorie_id}}</td>
         </ng-container>
 
         <!-- thème Column -->
         <ng-container matColumnDef="theme">
           <th mat-header-cell *matHeaderCellDef>Thème</th>
-          <td mat-cell *matCellDef="let element"> {{element.theme}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.theme_id}} </td>
         </ng-container>
 
         <!-- La ligne -->
@@ -82,7 +80,7 @@ export class DataSourceAsynchro extends DataSource<JeuRequest> {
     this.jeuSubject.complete();
   }
 
-  setData(sort = 0, horsLimite= false) {
+  setData() {
     this.jeuService.getJeux()
       .subscribe(jeux => this.jeuSubject.next(jeux));
   }
