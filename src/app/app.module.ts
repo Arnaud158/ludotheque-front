@@ -23,6 +23,8 @@ import { RegisterComponent } from './register.component';
 import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 import {MatButtonModule} from "@angular/material/button";
+import { AProposComponent } from './a-propos/a-propos.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import {MatButtonModule} from "@angular/material/button";
     PiedPageComponent,
     LoginComponent,
     RegisterComponent,
+    AProposComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
