@@ -25,6 +25,7 @@ import { AuthInterceptor } from './auth.interceptor';
 import {MatButtonModule} from "@angular/material/button";
 import { AProposComponent } from './a-propos/a-propos.component';
 import { ContactComponent } from './contact/contact.component';
+import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ContactComponent } from './contact/contact.component';
     RegisterComponent,
     AProposComponent,
     ContactComponent,
+    CarteJeuComponent,
   ],
   imports: [
     BrowserModule,
