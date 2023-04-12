@@ -24,7 +24,7 @@ const httpOptions = {
 })
 export class AuthService {
 
-  private userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(ANONYMOUS_USER);
+  public userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(ANONYMOUS_USER);
   public user$: Observable<User> = this.userSubject.asObservable();
 
   isLoggedIn$: Observable<boolean> = this.user$.pipe(map(user => !!user.id));
@@ -39,12 +39,13 @@ export class AuthService {
     return this.http.post<any>(`${environment.apiUrl}/login`, {email, password}, httpOptions)
       .pipe(
         map(rep => {
-          const user = {...rep.user, jwtToken: rep.authorisation.token};
+          console.log('  login : ', rep);
+          const user = {...rep.adherent, jwtToken: rep.authorisation.token};
           this.userSubject.next(user);
           return user;
         }),
         shareReplay(),
-        tap(() => this.snackbar.open(`Bienvenue sur votre compte!`, 'Close', {
+        tap(() => this.snackbar.open(`Bienvenue ${this.userValue.nom} ${this.userValue.prenom}`, 'Close', {
           duration: 2000, horizontalPosition: 'right', verticalPosition: 'top'
         })),
         catchError(err => {
@@ -88,7 +89,7 @@ export class AuthService {
 
   logout(): void {
     const oldUser = this.userValue;
-    this.http.post<any>(`${environment.apiUrl}/logout`, {}, httpOptions)
+    this.http.get<any>(`${environment.apiUrl}/logout?jwtToken=${oldUser.jwtToken}`, httpOptions)
       .subscribe(user =>
         this.snackbar.open(`A bientôt, ${oldUser.name}`, 'Close', {
           duration: 2000, horizontalPosition: 'right', verticalPosition: 'top'
@@ -110,4 +111,5 @@ export class AuthService {
   public get userValue(): User {
     return this.userSubject.value;
   }
+
 }
