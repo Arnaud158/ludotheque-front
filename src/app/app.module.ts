@@ -27,6 +27,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { AProposComponent } from './a-propos/a-propos.component';
 import { ContactComponent } from './contact/contact.component';
 import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
     AProposComponent,
     ContactComponent,
     CarteJeuComponent,
+    AccueilComponent,
   ],
   imports: [
     BrowserModule,
