@@ -6,8 +6,8 @@
 
 # Thomas
 ****
-
-
+- Le bandeau de navigation (PA01)
+  - Difficultés pour savoir si un utilisateur est connecté ou non
 
 # Jules
 *****
