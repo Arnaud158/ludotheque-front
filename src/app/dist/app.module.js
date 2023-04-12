@@ -12,6 +12,7 @@ var platform_browser_1 = require("@angular/platform-browser");
 var animations_1 = require("@angular/platform-browser/animations");
 var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
+var pied_page_component_1 = require("./pied-page/pied-page.component");
 var expansion_1 = require("@angular/material/expansion");
 var list_1 = require("@angular/material/list");
 var icon_1 = require("@angular/material/icon");
@@ -27,6 +28,10 @@ var login_component_1 = require("./login.component");
 var register_component_1 = require("./register.component");
 var http_1 = require("@angular/common/http");
 var auth_interceptor_1 = require("./auth.interceptor");
+var liste_jeu_component_1 = require("./liste-jeu.component");
+var button_1 = require("@angular/material/button");
+var a_propos_component_1 = require("./a-propos/a-propos.component");
+var contact_component_1 = require("./contact/contact.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -34,8 +39,12 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [
                 app_component_1.AppComponent,
+                pied_page_component_1.PiedPageComponent,
                 login_component_1.LoginComponent,
                 register_component_1.RegisterComponent,
+                liste_jeu_component_1.ListeJeuComponent,
+                a_propos_component_1.AProposComponent,
+                contact_component_1.ContactComponent,
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -52,7 +61,8 @@ var AppModule = /** @class */ (function () {
                 input_1.MatInputModule,
                 card_1.MatCardModule,
                 http_1.HttpClientModule,
-                animations_1.BrowserAnimationsModule
+                animations_1.BrowserAnimationsModule,
+                button_1.MatButtonModule
             ],
             providers: [{
                     provide: http_1.HTTP_INTERCEPTORS,
