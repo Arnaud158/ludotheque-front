@@ -1,4 +1,5 @@
 export interface JeuRequest {
+    id:string;
     nom: string;
     description: string;
     langue: string;
