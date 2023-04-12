@@ -8,8 +8,16 @@ import { Component } from '@angular/core';
       </header>
   `,
   styles: [`
-    header {text-align:center; font-size:30rem; height:100vh;}
-    `]
+    header{
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      font-size: 30rem; }
+
+  `]
 })
 export class PageNotFoundComponent {
 
