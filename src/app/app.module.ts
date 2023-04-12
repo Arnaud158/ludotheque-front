@@ -22,6 +22,7 @@ import { RegisterComponent } from './register.component';
 
 import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
+import { ListeJeuComponent } from './liste-jeu.component';
 import {MatButtonModule} from "@angular/material/button";
 import { AProposComponent } from './a-propos/a-propos.component';
 import { ContactComponent } from './contact/contact.component';
@@ -33,6 +34,7 @@ import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
     PiedPageComponent,
     LoginComponent,
     RegisterComponent,
+    ListeJeuComponent,
     AProposComponent,
     ContactComponent,
     CarteJeuComponent,
