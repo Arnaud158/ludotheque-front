@@ -1,22 +1,24 @@
+<body>
 
+</body>
 <footer id="footer">
   <div>
     <p> siège social : {{siegeEntreprise}} </p>
   </div>
 
   <div>
-    <ul>
-      <li><a href="{{twitter}}">Twitter</a></li>
-      <li><a href="{{linkedin}}">LinkedIn</a></li>
-      <li><a href="{{gitLab}}">GitLab</a></li>
-    </ul>
+    <mat-list>
+      <mat-list-item><a mat-button href="{{twitter}}">Twitter</a></mat-list-item>
+      <mat-list-item><a mat-button href="{{linkedin}}">LinkedIn</a></mat-list-item>
+      <mat-list-item><a mat-button href="{{gitLab}}">GitLab</a></mat-list-item>
+    </mat-list>
   </div>
 
   <div>
-    <ul>
-      <li><a href="./a-propos.html">A propos</a></li>
-      <li><a href="./contact.html">Contactez-nous !</a></li>
-    </ul>
+    <mat-list>
+      <mat-list-item><a mat-button href="/apropos">A propos</a></mat-list-item>
+      <mat-list-item><a mat-button href="/contact">Contactez-nous !</a></mat-list-item>
+    </mat-list>
   </div>
 
 </footer>
