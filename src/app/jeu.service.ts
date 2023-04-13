@@ -69,17 +69,6 @@ export class JeuService {
     );
   }
 
-  get5Jeux() {
-    let url = `${environment.apiUrl}/jeux/listejeu`;
-    return this.http.post<any>(url, httpOptions).pipe(
-      map(res => res.data as JeuRequest[]),
-      tap(res=> console.log(res)),
-      catchError(err => {
-        console.log('Erreur http : ', err);
-        return of([]);
-      })
-    );
-  }
   uploadMedia(id: number, avatar: any) {
     let url = `${environment.apiUrl}/jeu/id`;
     return this.http.put<any>(url, avatar, httpOptions).pipe(
@@ -99,7 +88,7 @@ export class JeuService {
       url = `${environment.apiUrl}/jeu/listeJeu?age_min=18`;
     }
     if (sortNb%3==2) {
-      url = `${environment.apiUrl}/jeu/listeJeu?nombre_joueurs_max=4`;
+      url = `${environment.apiUrl}/jeu/listeJeu?nombre_joueurs_max=2`;
     }
     return this.http.post<any>(url, httpOptions).pipe(
       map(res => res.Jeux as JeuRequest[]),

@@ -67,7 +67,7 @@ var JeuService = /** @class */ (function () {
             url = environment_1.environment.apiUrl + "/jeu/listeJeu?age_min=18";
         }
         if (sortNb % 3 == 2) {
-            url = environment_1.environment.apiUrl + "/jeu/listeJeu?nombre_joueurs_max=4";
+            url = environment_1.environment.apiUrl + "/jeu/listeJeu?nombre_joueurs_max=2";
         }
         return this.http.post(url, httpOptions).pipe(rxjs_1.map(function (res) { return res.Jeux; }), rxjs_1.tap(function (res) { return console.log(res); }), rxjs_1.catchError(function (err) {
             console.log('Erreur http : ', err);

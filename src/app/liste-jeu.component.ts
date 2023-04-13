@@ -49,7 +49,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
     </div>
   </div>
 
-  <div>
+  <div class="display">
     <button (click)="setData()">Tri</button>
   </div>
 `,
