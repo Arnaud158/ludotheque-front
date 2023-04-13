@@ -29,6 +29,7 @@ import { ContactComponent } from './contact/contact.component';
 import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
 import { MatCardModule } from '@angular/material/card';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { DetailsJeuComponent } from './details-jeu/details-jeu.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     ListeJeuComponent,
     AProposComponent,
     ContactComponent,
-    CarteJeuComponent
+    CarteJeuComponent,
+    DetailsJeuComponent
   ],
   imports: [
     BrowserModule,
