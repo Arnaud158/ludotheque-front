@@ -37,3 +37,5 @@
 ***
 - Pied de page (PA02) :
   - Des difficultés au niveau du CSS
+- Page d'accueuil 
+  - Difficultés dans l'affichage de 5 jeux 
