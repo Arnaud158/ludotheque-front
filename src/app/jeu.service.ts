@@ -20,9 +20,9 @@ const httpOptions = {
 export class JeuService {
 
   constructor(private http: HttpClient,
-    private snackbar: MatSnackBar,
-) {
-}
+              private snackbar: MatSnackBar,
+  ) {
+  }
 
 
   getJeux() : Observable<JeuRequest[]> {

@@ -61,6 +61,7 @@ export class ListeJeuComponent {
 
   public listeJeu : JeuRequest[] = []
   dataSource: DataSourceAsynchro = new DataSourceAsynchro(this.jeuService);
+<<<<<<< HEAD
   lesColonnes = ['nom', 'description', 'langue', 'categorie', 'theme'];
 
   constructor(public jeuService : JeuService) {
@@ -69,6 +70,12 @@ export class ListeJeuComponent {
 
   setData() {
     this.dataSource.setData();
+=======
+  lesColonnes = ['nom', 'description', 'langue', 'categorie', 'theme', "details"];
+
+  constructor(public jeuService : JeuService) {
+    this.dataSource.setData();
+>>>>>>> 45aeae0d8d7b1952d1e919797b5fa2e4d4462671
   }
 }
 
@@ -91,7 +98,12 @@ export class DataSourceAsynchro extends DataSource<JeuRequest> {
   }
 
   setData() {
+<<<<<<< HEAD
     this.jeuService.getJeuxSort(this.nbTri)
+=======
+    this.jeuService.getJeuxSort(0)
+      //this.jeuService.getJeux()
+>>>>>>> 45aeae0d8d7b1952d1e919797b5fa2e4d4462671
       .subscribe(jeux => this.jeuSubject.next(jeux));
     this.nbTri+=1
   }
