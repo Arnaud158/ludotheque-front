@@ -55,7 +55,8 @@ var AppModule = /** @class */ (function () {
                 accueil_component_1.AccueilComponent,
                 header_component_1.HeaderComponent,
                 details_jeu_component_1.DetailsJeuComponent,
-                liste_jeu_carte_component_1.ListeJeuCarteComponent
+                liste_jeu_carte_component_1.ListeJeuCarteComponent,
+                carte_jeu_component_1.CarteJeuComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,

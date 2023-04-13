@@ -11,13 +11,9 @@ import {JeuService} from "../jeu.service";
 export class DetailsJeuComponent {
   id : number = +(this.route.snapshot.paramMap.get('id') || 1);
   loading: boolean = false;
-  jeu : JeuRequest = <JeuRequest>{};
+  jeu : any;
 
   constructor(private route: ActivatedRoute, private jeuService : JeuService) {
-
-  }
-
-  ngOnInit(): void {
     this.loading = true;
     this.jeuService.getJeu(this.id).subscribe(
       rep => {

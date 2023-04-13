@@ -45,7 +45,8 @@ import { ListeJeuCarteComponent } from './liste-jeu-carte.component';
     AccueilComponent,
     HeaderComponent,
     DetailsJeuComponent,
-    ListeJeuCarteComponent
+    ListeJeuCarteComponent,
+    CarteJeuComponent
   ],
   imports: [
     BrowserModule,
