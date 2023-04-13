@@ -15,6 +15,7 @@ export class AccueilComponent {
 
   constructor(public jeuService : JeuService) {
     this.dataSource.setData();
+    console.log(this.dataSource)
   }
 }
 

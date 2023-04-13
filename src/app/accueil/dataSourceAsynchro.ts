@@ -11,7 +11,7 @@ export class DataSourceAsynchro extends DataSource<JeuRequest> {
 //    this.setData();
   }
 
-  connect(): Observable<JeuRequest[]> {
+  connect() {
     return this.jeuSubject.asObservable();
   }
 
@@ -20,7 +20,7 @@ export class DataSourceAsynchro extends DataSource<JeuRequest> {
   }
 
   setData() {
-    this.jeuService.getJeux()
+    this.jeuService.get5Jeux()
       .subscribe(jeux => this.jeuSubject.next(jeux));
   }
 }
