@@ -6,9 +6,9 @@ import { RegisterComponent } from './register.component';
 import { AppComponent } from './app.component';
 import {AProposComponent} from "./a-propos/a-propos.component";
 import {ContactComponent} from "./contact/contact.component";
-import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
 import {ListeJeuComponent} from "./liste-jeu.component";
 import {DetailsJeuComponent} from "./details-jeu/details-jeu.component";
+import {ListeJeuCarteComponent} from "./liste-jeu-carte.component";
 
 const routes: Routes = [
   {path: '', component: AppComponent},
@@ -17,7 +17,8 @@ const routes: Routes = [
   {path: 'apropos', component:AProposComponent},
   {path: 'contact', component:ContactComponent},
   {path: 'jeux/:id', component: DetailsJeuComponent},
-  {path: 'jeux', component:ListeJeuComponent},
+  {path: 'jeuxTab', component:ListeJeuComponent},
+  {path: 'jeuxCarte', component:ListeJeuCarteComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 
