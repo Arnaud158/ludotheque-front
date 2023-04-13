@@ -22,7 +22,6 @@ var select_1 = require("@angular/material/select");
 var forms_1 = require("@angular/forms");
 var input_1 = require("@angular/material/input");
 var form_field_1 = require("@angular/material/form-field");
-var card_1 = require("@angular/material/card");
 var snack_bar_1 = require("@angular/material/snack-bar");
 var login_component_1 = require("./login.component");
 var register_component_1 = require("./register.component");
@@ -59,7 +58,6 @@ var AppModule = /** @class */ (function () {
                 forms_1.ReactiveFormsModule,
                 form_field_1.MatFormFieldModule,
                 input_1.MatInputModule,
-                card_1.MatCardModule,
                 http_1.HttpClientModule,
                 animations_1.BrowserAnimationsModule,
                 button_1.MatButtonModule

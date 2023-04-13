@@ -40,9 +40,10 @@ export class JeuService {
     let url = `${environment.apiUrl}/jeux/${id}`;
     return this.http.get<any>(url, httpOptions).pipe(
       map(res => res.data as JeuRequest),
+      tap(res=> console.log(res)),
       catchError(err => {
         console.log('Erreur http : ', err);
-        return err;
+        return of();
       })
     );
   }
