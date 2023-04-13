@@ -15,21 +15,22 @@ export class CarteJeuComponent implements OnInit{
 
   id : number = +(this.route.snapshot.paramMap.get('id') || 1);
   loading: boolean = false;
-  jeu : JeuRequest = <JeuRequest>{};
+  @Input() jeux : JeuRequest;
 
   constructor(private route: ActivatedRoute, private jeuService : JeuService) {
-
+    this.jeux = <JeuRequest>{}
   }
 
   ngOnInit(): void {
     this.loading = true;
-    this.jeuService.getJeu(this.id).subscribe(
+    console.log("icicleieifikze")
+    console.log(this.jeux)
+/*    this.jeuService.getJeu(this.id).subscribe(
       rep => {
-        console.log(rep);
-        this.jeu = rep;
+        this.jeux = rep;
         this.loading = false;
       }
-    );
+    );*/
   }
 
 }
