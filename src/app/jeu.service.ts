@@ -68,6 +68,18 @@ export class JeuService {
       })
     );
   }
+
+  get5Jeux() {
+    let url = `${environment.apiUrl}/jeux/listejeu`;
+    return this.http.post<any>(url, httpOptions).pipe(
+      map(res => res.data as JeuRequest[]),
+      tap(res=> console.log(res)),
+      catchError(err => {
+        console.log('Erreur http : ', err);
+        return of([]);
+      })
+    );
+  }
   uploadMedia(id: number, avatar: any) {
     let url = `${environment.apiUrl}/jeu/id`;
     return this.http.put<any>(url, avatar, httpOptions).pipe(

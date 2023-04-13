@@ -35,6 +35,7 @@ var contact_component_1 = require("./contact/contact.component");
 var carte_jeu_component_1 = require("./carte-jeu/carte-jeu.component");
 var progress_spinner_1 = require("@angular/material/progress-spinner");
 var header_component_1 = require("./header.component");
+var accueil_component_1 = require("./accueil/accueil.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -49,8 +50,8 @@ var AppModule = /** @class */ (function () {
                 a_propos_component_1.AProposComponent,
                 contact_component_1.ContactComponent,
                 carte_jeu_component_1.CarteJeuComponent,
-                header_component_1.HeaderComponent,
-                carte_jeu_component_1.CarteJeuComponent
+                accueil_component_1.AccueilComponent,
+                header_component_1.HeaderComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
