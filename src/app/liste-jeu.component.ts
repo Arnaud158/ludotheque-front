@@ -47,6 +47,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
       </table>
     </div>
   </div>
+
+  <div>
+    <button (click)="setData()">Tri</button>
+  </div>
 `,
 
   styles: [
@@ -61,15 +65,21 @@ export class ListeJeuComponent {
   constructor(public jeuService : JeuService) {
     this.dataSource.setData();
   }
+
+  setData() {
+    this.dataSource.setData();
+  }
 }
 
 
 export class DataSourceAsynchro extends DataSource<JeuRequest> {
   private jeuSubject = new BehaviorSubject<JeuRequest[]>([]);
+  private nbTri : number;
 
   constructor(private jeuService: JeuService) {
     super();
-//    this.setData();
+    this.nbTri=0;
+    //this.setData();
   }
 
   connect(): Observable<JeuRequest[]> {
@@ -81,8 +91,9 @@ export class DataSourceAsynchro extends DataSource<JeuRequest> {
   }
 
   setData() {
-    this.jeuService.getJeuxSort(0)
+    this.jeuService.getJeuxSort(this.nbTri%3)
     //this.jeuService.getJeux()
       .subscribe(jeux => this.jeuSubject.next(jeux));
+      this.nbTri+=1
   }
 }

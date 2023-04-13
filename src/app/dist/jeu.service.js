@@ -23,7 +23,7 @@ var JeuService = /** @class */ (function () {
         this.http = http;
         this.snackbar = snackbar;
     }
-    JeuService.prototype.getJeux = function (params) {
+    JeuService.prototype.getJeux = function () {
         var url = environment_1.environment.apiUrl + "/jeu/listeJeu";
         return this.http.post(url, httpOptions).pipe(rxjs_1.map(function (res) { return res.Jeux; }), rxjs_1.tap(function (res) { return console.log(res); }), rxjs_1.catchError(function (err) {
             console.log('Erreur http : ', err);

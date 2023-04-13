@@ -25,7 +25,7 @@ export class JeuService {
 }
 
 
-  getJeux(params? : Request) : Observable<JeuRequest[]> {
+  getJeux() : Observable<JeuRequest[]> {
     let url = `${environment.apiUrl}/jeu/listeJeu`;
     return this.http.post<any>(url, httpOptions).pipe(
       map(res => res.Jeux as JeuRequest[]),

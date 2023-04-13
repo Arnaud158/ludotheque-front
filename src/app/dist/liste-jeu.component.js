@@ -31,10 +31,13 @@ var ListeJeuComponent = /** @class */ (function () {
         this.lesColonnes = ['nom', 'description', 'langue', 'categorie', 'theme'];
         this.dataSource.setData();
     }
+    ListeJeuComponent.prototype.setData = function () {
+        this.dataSource.setData();
+    };
     ListeJeuComponent = __decorate([
         core_1.Component({
             selector: 'app-liste-jeu',
-            template: "\n  <div class=\"liste-personnes\">\n    <div class=\"div-table-personnes\">\n      <table mat-table [dataSource]=\"dataSource\">\n\n        <!-- nom Column -->\n        <ng-container matColumnDef=\"nom\">\n          <th mat-header-cell *matHeaderCellDef>Jeu</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.nom}} </td>\n        </ng-container>\n\n        <!-- description Column -->\n        <ng-container matColumnDef=\"description\">\n          <th mat-header-cell *matHeaderCellDef>Description</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.description}} </td>\n        </ng-container>\n\n        <!-- langue Column -->\n        <ng-container matColumnDef=\"langue\">\n          <th mat-header-cell *matHeaderCellDef>Langue</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.langue}} </td>\n        </ng-container>\n\n        <!-- cat\u00E9gorie Column -->\n        <ng-container matColumnDef=\"categorie\">\n          <th mat-header-cell *matHeaderCellDef>Cat\u00E9gorie</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.categorie_id}}</td>\n        </ng-container>\n\n        <!-- th\u00E8me Column -->\n        <ng-container matColumnDef=\"theme\">\n          <th mat-header-cell *matHeaderCellDef>Th\u00E8me</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.theme_id}} </td>\n        </ng-container>\n\n        <!-- La ligne -->\n        <tr mat-header-row *matHeaderRowDef=\"lesColonnes; sticky: true\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: lesColonnes;\"></tr>\n      </table>\n    </div>\n  </div>\n",
+            template: "\n  <div class=\"liste-personnes\">\n    <div class=\"div-table-personnes\">\n      <table mat-table [dataSource]=\"dataSource\">\n\n        <!-- nom Column -->\n        <ng-container matColumnDef=\"nom\">\n          <th mat-header-cell *matHeaderCellDef>Jeu</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.nom}} </td>\n        </ng-container>\n\n        <!-- description Column -->\n        <ng-container matColumnDef=\"description\">\n          <th mat-header-cell *matHeaderCellDef>Description</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.description}} </td>\n        </ng-container>\n\n        <!-- langue Column -->\n        <ng-container matColumnDef=\"langue\">\n          <th mat-header-cell *matHeaderCellDef>Langue</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.langue}} </td>\n        </ng-container>\n\n        <!-- cat\u00E9gorie Column -->\n        <ng-container matColumnDef=\"categorie\">\n          <th mat-header-cell *matHeaderCellDef>Cat\u00E9gorie</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.categorie_id}}</td>\n        </ng-container>\n\n        <!-- th\u00E8me Column -->\n        <ng-container matColumnDef=\"theme\">\n          <th mat-header-cell *matHeaderCellDef>Th\u00E8me</th>\n          <td mat-cell *matCellDef=\"let element\"> {{element.theme_id}} </td>\n        </ng-container>\n\n        <!-- La ligne -->\n        <tr mat-header-row *matHeaderRowDef=\"lesColonnes; sticky: true\"></tr>\n        <tr mat-row *matRowDef=\"let row; columns: lesColonnes;\"></tr>\n      </table>\n    </div>\n  </div>\n\n  <div>\n    <button (click)=\"setData()\">Tri</button>\n  </div>\n",
             styles: []
         })
     ], ListeJeuComponent);
@@ -47,8 +50,9 @@ var DataSourceAsynchro = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.jeuService = jeuService;
         _this.jeuSubject = new rxjs_1.BehaviorSubject([]);
+        _this.nbTri = 0;
         return _this;
-        //    this.setData();
+        //this.setData();
     }
     DataSourceAsynchro.prototype.connect = function () {
         return this.jeuSubject.asObservable();
@@ -58,9 +62,10 @@ var DataSourceAsynchro = /** @class */ (function (_super) {
     };
     DataSourceAsynchro.prototype.setData = function () {
         var _this = this;
-        this.jeuService.getJeuxSort(0)
+        this.jeuService.getJeuxSort(this.nbTri % 3)
             //this.jeuService.getJeux()
             .subscribe(function (jeux) { return _this.jeuSubject.next(jeux); });
+        this.nbTri += 1;
     };
     return DataSourceAsynchro;
 }(collections_1.DataSource));
