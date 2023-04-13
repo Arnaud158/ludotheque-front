@@ -42,6 +42,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
           <td mat-cell *matCellDef="let element"> {{element.theme_id}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="details">
+            <th mat-header-cell *matHeaderCellDef>Détails</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-icon [routerLink]="['/jeux/', element.id]">loupe</mat-icon>
+            </td>
+          </ng-container>
+
         <!-- La ligne -->
         <tr mat-header-row *matHeaderRowDef="lesColonnes; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: lesColonnes;"></tr>
@@ -61,7 +68,7 @@ export class ListeJeuComponent {
 
   public listeJeu : JeuRequest[] = []
   dataSource: DataSourceAsynchro = new DataSourceAsynchro(this.jeuService);
-  lesColonnes = ['nom', 'description', 'langue', 'categorie', 'theme'];
+  lesColonnes = ['nom', 'description', 'langue', 'categorie', 'theme', 'details'];
 
   constructor(public jeuService : JeuService) {
     this.dataSource.setData();

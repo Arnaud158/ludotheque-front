@@ -30,6 +30,8 @@ import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { HeaderComponent } from './header.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { DetailsJeuComponent } from './details-jeu/details-jeu.component';
+import { ListeJeuCarteComponent } from './liste-jeu-carte.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,10 @@ import { AccueilComponent } from './accueil/accueil.component';
     ContactComponent,
     CarteJeuComponent,
     AccueilComponent,
-    HeaderComponent
+    HeaderComponent,
+    DetailsJeuComponent,
+    ListeJeuCarteComponent,
+    CarteJeuComponent
   ],
   imports: [
     BrowserModule,

@@ -32,9 +32,9 @@ var JeuService = /** @class */ (function () {
     };
     JeuService.prototype.getJeu = function (id) {
         var url = environment_1.environment.apiUrl + "/jeu/" + id;
-        return this.http.get(url, httpOptions).pipe(rxjs_1.map(function (res) { return res.Jeux; }), rxjs_1.tap(function (res) { return console.log(res); }), rxjs_1.catchError(function (err) {
+        return this.http.get(url, httpOptions).pipe(rxjs_1.map(function (res) { return res.jeu; }), rxjs_1.tap(function (res) { return console.log(res); }), rxjs_1.catchError(function (err) {
             console.log('Erreur http : ', err);
-            return rxjs_1.of();
+            return rxjs_1.of([]);
         }));
     };
     JeuService.prototype.createJeu = function (jeuRequest) {
