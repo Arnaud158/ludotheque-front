@@ -7,10 +7,18 @@
 # Thomas
 ****
 - Le bandeau de navigation (PA01)
+
   - Difficultés pour savoir si un utilisateur est connecté ou non
+
 - Composant carte jeu (PJ02)
+
   - Difficultés pour faire fonctionner le mat cart (il fallait juste enlever et remettre l'import :/)
-  - Difficulté pour convertir l'observable
+
+  - Difficultés pour convertir l'observable
+
+- Affichage de la liste des jeux sous forme de cartes (PJ03)
+
+  - Difficultés pour comprendre le code de Jules
 
 # Jules
 *****
