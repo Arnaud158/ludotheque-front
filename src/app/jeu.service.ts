@@ -9,7 +9,8 @@ import { JeuRequest } from 'src/models/jeu-request';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Accept': 'application/json'
+    'Accept': 'application/json',
+    'cess-Control-Allow-Origin': 'http://localhost:4200'
   })
 };
 
@@ -25,9 +26,9 @@ export class JeuService {
 
 
   getJeux(params? : Request) : Observable<JeuRequest[]> {
-    let url = `${environment.apiUrl}/jeux`;
-    return this.http.get<any>(url, httpOptions).pipe(
-      map(res => res.data as JeuRequest[]),
+    let url = `${environment.apiUrl}/jeu/listeJeu`;
+    return this.http.post<any>(url, httpOptions).pipe(
+      map(res => res.Jeux as JeuRequest[]),
       tap(res=> console.log(res)),
       catchError(err => {
         console.log('Erreur http : ', err);
@@ -37,9 +38,9 @@ export class JeuService {
   }
 
   getJeu(id: number) {
-    let url = `${environment.apiUrl}/jeux/${id}`;
+    let url = `${environment.apiUrl}/jeu/${id}`;
     return this.http.get<any>(url, httpOptions).pipe(
-      map(res => res.data as JeuRequest),
+      map(res => res.Jeux as JeuRequest),
       tap(res=> console.log(res)),
       catchError(err => {
         console.log('Erreur http : ', err);
@@ -49,7 +50,7 @@ export class JeuService {
   }
 
   createJeu(jeuRequest: JeuRequest) {
-    let url = `${environment.apiUrl}/jeux/`;
+    let url = `${environment.apiUrl}/jeu/`;
     return this.http.post<any>(url, jeuRequest, httpOptions).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
@@ -59,7 +60,7 @@ export class JeuService {
   }
 
   updateJeu(jeuRequest: JeuRequest) {
-    let url = `${environment.apiUrl}/jeux/${jeuRequest.id}`;
+    let url = `${environment.apiUrl}/jeu/${jeuRequest.id}`;
     return this.http.put<any>(url, jeuRequest, httpOptions).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
@@ -68,11 +69,32 @@ export class JeuService {
     );
   }
   uploadMedia(id: number, avatar: any) {
-    let url = `${environment.apiUrl}/jeux/id`;
+    let url = `${environment.apiUrl}/jeu/id`;
     return this.http.put<any>(url, avatar, httpOptions).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
         return err;
+      })
+    );
+  }
+
+  getJeuxSort(sortNb : number) : Observable<JeuRequest[]> {
+    let url = `${environment.apiUrl}/jeu/listeJeu`;
+    if (sortNb%3==0) {
+      url = `${environment.apiUrl}/jeu/listeJeu?sort=asc`;
+    }
+    if (sortNb%3==1) {
+      url = `${environment.apiUrl}/jeu/listeJeu?age_min=18`;
+    }
+    if (sortNb%3==2) {
+      url = `${environment.apiUrl}/jeu/listeJeu?nombre_joueurs_max=4`;
+    }
+    return this.http.post<any>(url, httpOptions).pipe(
+      map(res => res.Jeux as JeuRequest[]),
+      tap(res=> console.log(res)),
+      catchError(err => {
+        console.log('Erreur http : ', err);
+        return of([]);
       })
     );
   }

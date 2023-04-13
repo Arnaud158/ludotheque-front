@@ -14,7 +14,8 @@ var rxjs_1 = require("rxjs");
 var httpOptions = {
     headers: new http_1.HttpHeaders({
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'cess-Control-Allow-Origin': 'http://localhost:4200'
     })
 };
 var JeuService = /** @class */ (function () {
@@ -23,38 +24,54 @@ var JeuService = /** @class */ (function () {
         this.snackbar = snackbar;
     }
     JeuService.prototype.getJeux = function (params) {
-        var url = environment_1.environment.apiUrl + "/jeux";
-        return this.http.get(url, httpOptions).pipe(rxjs_1.map(function (res) { return res.data; }), rxjs_1.tap(function (res) { return console.log(res); }), rxjs_1.catchError(function (err) {
+        var url = environment_1.environment.apiUrl + "/jeu/listeJeu";
+        return this.http.post(url, httpOptions).pipe(rxjs_1.map(function (res) { return res.Jeux; }), rxjs_1.tap(function (res) { return console.log(res); }), rxjs_1.catchError(function (err) {
             console.log('Erreur http : ', err);
             return rxjs_1.of([]);
         }));
     };
     JeuService.prototype.getJeu = function (id) {
-        var url = environment_1.environment.apiUrl + "/jeux/" + id;
-        return this.http.get(url, httpOptions).pipe(rxjs_1.map(function (res) { return res.data; }), rxjs_1.tap(function (res) { return console.log(res); }), rxjs_1.catchError(function (err) {
+        var url = environment_1.environment.apiUrl + "/jeu/" + id;
+        return this.http.get(url, httpOptions).pipe(rxjs_1.map(function (res) { return res.Jeux; }), rxjs_1.tap(function (res) { return console.log(res); }), rxjs_1.catchError(function (err) {
             console.log('Erreur http : ', err);
             return rxjs_1.of();
         }));
     };
     JeuService.prototype.createJeu = function (jeuRequest) {
-        var url = environment_1.environment.apiUrl + "/jeux/";
+        var url = environment_1.environment.apiUrl + "/jeu/";
         return this.http.post(url, jeuRequest, httpOptions).pipe(rxjs_1.catchError(function (err) {
             console.log('Erreur http : ', err);
             return err;
         }));
     };
     JeuService.prototype.updateJeu = function (jeuRequest) {
-        var url = environment_1.environment.apiUrl + "/jeux/" + jeuRequest.id;
+        var url = environment_1.environment.apiUrl + "/jeu/" + jeuRequest.id;
         return this.http.put(url, jeuRequest, httpOptions).pipe(rxjs_1.catchError(function (err) {
             console.log('Erreur http : ', err);
             return err;
         }));
     };
     JeuService.prototype.uploadMedia = function (id, avatar) {
-        var url = environment_1.environment.apiUrl + "/jeux/id";
+        var url = environment_1.environment.apiUrl + "/jeu/id";
         return this.http.put(url, avatar, httpOptions).pipe(rxjs_1.catchError(function (err) {
             console.log('Erreur http : ', err);
             return err;
+        }));
+    };
+    JeuService.prototype.getJeuxSort = function (sortNb) {
+        var url = environment_1.environment.apiUrl + "/jeu/listeJeu";
+        if (sortNb % 3 == 0) {
+            url = environment_1.environment.apiUrl + "/jeu/listeJeu?sort=asc";
+        }
+        if (sortNb % 3 == 1) {
+            url = environment_1.environment.apiUrl + "/jeu/listeJeu?age_min=18";
+        }
+        if (sortNb % 3 == 2) {
+            url = environment_1.environment.apiUrl + "/jeu/listeJeu?nombre_joueurs_max=4";
+        }
+        return this.http.post(url, httpOptions).pipe(rxjs_1.map(function (res) { return res.Jeux; }), rxjs_1.tap(function (res) { return console.log(res); }), rxjs_1.catchError(function (err) {
+            console.log('Erreur http : ', err);
+            return rxjs_1.of([]);
         }));
     };
     JeuService = __decorate([

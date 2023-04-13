@@ -58,7 +58,8 @@ var DataSourceAsynchro = /** @class */ (function (_super) {
     };
     DataSourceAsynchro.prototype.setData = function () {
         var _this = this;
-        this.jeuService.getJeux()
+        this.jeuService.getJeuxSort(0)
+            //this.jeuService.getJeux()
             .subscribe(function (jeux) { return _this.jeuSubject.next(jeux); });
     };
     return DataSourceAsynchro;

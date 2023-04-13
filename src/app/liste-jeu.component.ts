@@ -81,7 +81,8 @@ export class DataSourceAsynchro extends DataSource<JeuRequest> {
   }
 
   setData() {
-    this.jeuService.getJeux()
+    this.jeuService.getJeuxSort(0)
+    //this.jeuService.getJeux()
       .subscribe(jeux => this.jeuSubject.next(jeux));
   }
 }
