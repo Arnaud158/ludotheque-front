@@ -7,7 +7,18 @@
 # Thomas
 ****
 - Le bandeau de navigation (PA01)
+
   - Difficultés pour savoir si un utilisateur est connecté ou non
+
+- Composant carte jeu (PJ02)
+
+  - Difficultés pour faire fonctionner le mat cart (il fallait juste enlever et remettre l'import :/)
+
+  - Difficultés pour convertir l'observable
+
+- Affichage de la liste des jeux sous forme de cartes (PJ03)
+
+  - Difficultés pour comprendre le code de Jules
 
 # Jules
 *****
@@ -34,3 +45,7 @@
 ***
 - Pied de page (PA02) :
   - Des difficultés au niveau du CSS
+- Page d'accueil (PA03)
+  - Difficultés dans l'affichage de 5 jeux 
+- Détails d'un jeu (PJ05)
+  - Difficultés au niveau de la récuparationd des informations

@@ -33,6 +33,7 @@ var button_1 = require("@angular/material/button");
 var a_propos_component_1 = require("./a-propos/a-propos.component");
 var contact_component_1 = require("./contact/contact.component");
 var carte_jeu_component_1 = require("./carte-jeu/carte-jeu.component");
+var progress_spinner_1 = require("@angular/material/progress-spinner");
 var header_component_1 = require("./header.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -48,7 +49,8 @@ var AppModule = /** @class */ (function () {
                 a_propos_component_1.AProposComponent,
                 contact_component_1.ContactComponent,
                 carte_jeu_component_1.CarteJeuComponent,
-                header_component_1.HeaderComponent
+                header_component_1.HeaderComponent,
+                carte_jeu_component_1.CarteJeuComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -66,7 +68,8 @@ var AppModule = /** @class */ (function () {
                 http_1.HttpClientModule,
                 animations_1.BrowserAnimationsModule,
                 button_1.MatButtonModule,
-                card_1.MatCardModule
+                card_1.MatCardModule,
+                progress_spinner_1.MatProgressSpinnerModule
             ],
             providers: [{
                     provide: http_1.HTTP_INTERCEPTORS,

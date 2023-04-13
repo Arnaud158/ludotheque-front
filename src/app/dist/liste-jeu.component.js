@@ -52,7 +52,6 @@ var DataSourceAsynchro = /** @class */ (function (_super) {
         _this.jeuSubject = new rxjs_1.BehaviorSubject([]);
         _this.nbTri = 0;
         return _this;
-        //this.setData();
     }
     DataSourceAsynchro.prototype.connect = function () {
         return this.jeuSubject.asObservable();
@@ -62,8 +61,7 @@ var DataSourceAsynchro = /** @class */ (function (_super) {
     };
     DataSourceAsynchro.prototype.setData = function () {
         var _this = this;
-        this.jeuService.getJeuxSort(this.nbTri % 3)
-            //this.jeuService.getJeux()
+        this.jeuService.getJeuxSort(this.nbTri)
             .subscribe(function (jeux) { return _this.jeuSubject.next(jeux); });
         this.nbTri += 1;
     };

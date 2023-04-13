@@ -79,7 +79,6 @@ export class DataSourceAsynchro extends DataSource<JeuRequest> {
   constructor(private jeuService: JeuService) {
     super();
     this.nbTri=0;
-    //this.setData();
   }
 
   connect(): Observable<JeuRequest[]> {
@@ -91,9 +90,8 @@ export class DataSourceAsynchro extends DataSource<JeuRequest> {
   }
 
   setData() {
-    this.jeuService.getJeuxSort(this.nbTri%3)
-    //this.jeuService.getJeux()
+    this.jeuService.getJeuxSort(this.nbTri)
       .subscribe(jeux => this.jeuSubject.next(jeux));
-      this.nbTri+=1
+    this.nbTri+=1
   }
 }

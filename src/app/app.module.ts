@@ -27,6 +27,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { AProposComponent } from './a-propos/a-propos.component';
 import { ContactComponent } from './contact/contact.component';
 import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { HeaderComponent } from './header.component';
 
 @NgModule({
@@ -39,7 +40,8 @@ import { HeaderComponent } from './header.component';
     AProposComponent,
     ContactComponent,
     CarteJeuComponent,
-    HeaderComponent
+    HeaderComponent,
+    CarteJeuComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { HeaderComponent } from './header.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,
