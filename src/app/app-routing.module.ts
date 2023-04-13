@@ -8,9 +8,10 @@ import {AProposComponent} from "./a-propos/a-propos.component";
 import {ContactComponent} from "./contact/contact.component";
 import { CarteJeuComponent } from './carte-jeu/carte-jeu.component';
 import {ListeJeuComponent} from "./liste-jeu.component";
+import {AccueilComponent} from "./accueil/accueil.component";
 
 const routes: Routes = [
-  {path: '', component: AppComponent},
+  {path: '', component:AccueilComponent },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'apropos', component:AProposComponent},

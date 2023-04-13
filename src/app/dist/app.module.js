@@ -22,6 +22,7 @@ var select_1 = require("@angular/material/select");
 var forms_1 = require("@angular/forms");
 var input_1 = require("@angular/material/input");
 var form_field_1 = require("@angular/material/form-field");
+var card_1 = require("@angular/material/card");
 var snack_bar_1 = require("@angular/material/snack-bar");
 var login_component_1 = require("./login.component");
 var register_component_1 = require("./register.component");
@@ -31,6 +32,10 @@ var liste_jeu_component_1 = require("./liste-jeu.component");
 var button_1 = require("@angular/material/button");
 var a_propos_component_1 = require("./a-propos/a-propos.component");
 var contact_component_1 = require("./contact/contact.component");
+var carte_jeu_component_1 = require("./carte-jeu/carte-jeu.component");
+var progress_spinner_1 = require("@angular/material/progress-spinner");
+var header_component_1 = require("./header.component");
+var accueil_component_1 = require("./accueil/accueil.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -44,6 +49,9 @@ var AppModule = /** @class */ (function () {
                 liste_jeu_component_1.ListeJeuComponent,
                 a_propos_component_1.AProposComponent,
                 contact_component_1.ContactComponent,
+                carte_jeu_component_1.CarteJeuComponent,
+                accueil_component_1.AccueilComponent,
+                header_component_1.HeaderComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -60,7 +68,9 @@ var AppModule = /** @class */ (function () {
                 input_1.MatInputModule,
                 http_1.HttpClientModule,
                 animations_1.BrowserAnimationsModule,
-                button_1.MatButtonModule
+                button_1.MatButtonModule,
+                card_1.MatCardModule,
+                progress_spinner_1.MatProgressSpinnerModule
             ],
             providers: [{
                     provide: http_1.HTTP_INTERCEPTORS,
