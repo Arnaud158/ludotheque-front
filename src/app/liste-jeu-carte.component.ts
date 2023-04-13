@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   template: `
   <div class="liste-personnes">
     <div class="div-table-personnes">
-      <app-carte-jeu *ngFor="let jeux of listeJeu" [jeux]="jeux"></app-carte-jeu>
+      <app-carte-jeu *ngFor="let jeu of listeJeu" [jeux]="jeu"></app-carte-jeu>
     </div>
   </div>
 `,
