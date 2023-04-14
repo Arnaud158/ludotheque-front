@@ -7,6 +7,7 @@ cache:
 stages:
   - config
   - test
+  - analyse
 
 config:
   stage: config
@@ -21,3 +22,11 @@ test:
     - "sae-s4a01"
   script:
     - node_modules/qunit/bin/qunit.js
+
+eslint:
+  stage: analyse
+  tags:
+    - "sae-s4a01"
+  script:
+    - npm run lint
+  allow_failure: true
