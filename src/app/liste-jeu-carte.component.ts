@@ -5,7 +5,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-liste-jeu',
+  selector: 'app-liste-jeu-carte',
   template: `
     <div class="liste-personnes">
       <div class="div-table-personnes" *ngFor="let jeu of listeJeu">
