@@ -15,6 +15,7 @@ stages:
   - test
   - analyse
   - build
+  - deploy
 
 config:
   stage: config
