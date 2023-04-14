@@ -55,3 +55,16 @@ build-image:
           --dockerfile "${CI_PROJECT_DIR}/Dockerfile-prod"
           --destination "${URL_REGISTRE_IMAGE}/${IMAGE}"
   when: manual
+
+envoi_container:
+  stage: build
+  image: dockerhub.priv.iutdelens.ovh/docker:stable
+  tags:
+    - "sae-s4a01"
+  script:
+    - echo "$NEXUS_PWD" | docker login -u "$NEXUS_USER" --password-stdin "$URL_REGISTRE_IMAGE"
+    - docker push "$URL_REGISTRE_IMAGE/$IMAGE"
+  dependencies:
+    - build-image
+  when: manual
+
