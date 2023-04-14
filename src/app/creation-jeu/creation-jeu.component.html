@@ -1,0 +1,158 @@
+<mat-card>
+  <mat-card-title>Création d'un jeu</mat-card-title>
+
+  <mat-card-content>
+    <form [formGroup]="creationJeuForm" (ngSubmit)="creationJeu()">
+      <mat-form-field>
+        <input type="text" matInput placeholder="Nom" formControlName="nom" />
+        <mat-error
+          *ngIf="
+            this.creationJeuForm.get('nom')?.touched &&
+            this.creationJeuForm.get('nom')?.hasError('required')
+          "
+        >
+          Le nom est obligatoire
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          placeholder="Description"
+          formControlName="description"
+        />
+        <mat-error
+          *ngIf="
+            this.creationJeuForm.get('description')?.touched &&
+            this.creationJeuForm.get('description')?.hasError('required')
+          "
+        >
+          La description est obligatoire
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          placeholder="Langue"
+          formControlName="langue"
+        />
+        <mat-error
+          *ngIf="
+            this.creationJeuForm.get('langue')?.touched &&
+            this.creationJeuForm.get('langue')?.hasError('required')
+          "
+        >
+          La langue est obligatoire
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          type="number"
+          matInput
+          placeholder="Nombre de joueurs minimum"
+          formControlName="nombre_joueurs_min"
+        />
+        <mat-error
+          *ngIf="
+            this.creationJeuForm.get('nombre_joueurs_min')?.touched &&
+            this.creationJeuForm.get('nombre_joueurs_min')?.hasError('required')
+          "
+        >
+          Le nombre de joueurs minimum est obligatoire
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          type="number"
+          matInput
+          placeholder="Nombre de joueurs maximum"
+          formControlName="nombre_joueurs_max"
+        />
+        <mat-error
+          *ngIf="
+            this.creationJeuForm.get('nombre_joueurs_max')?.touched &&
+            this.creationJeuForm.get('nombre_joueurs_max')?.hasError('required')
+          "
+        >
+          Le nombre de joueurs maximum est obligatoire
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          type="number"
+          matInput
+          placeholder="Durée de la partie"
+          formControlName="duree_partie"
+        />
+        <mat-error
+          *ngIf="this.creationJeuForm.get('duree_partie')?.touched && this.creationJeuForm.get('duree_partie')?.hasError('required')"
+        >
+          La durée de la partie est obligatoire
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          placeholder="Categorie"
+          formControlName="categorie"
+        />
+        <mat-error
+          *ngIf="
+            this.creationJeuForm.get('categorie')?.touched &&
+            this.creationJeuForm.get('categorie')?.hasError('required')
+          "
+        >
+          La categorie est obligatoire
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          placeholder="Thème"
+          formControlName="theme"
+        />
+        <mat-error
+          *ngIf="
+            this.creationJeuForm.get('theme')?.touched &&
+            this.creationJeuForm.get('theme')?.hasError('required')
+          "
+        >
+          Le theme est obligatoire
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          type="text"
+          matInput
+          placeholder="Editeur"
+          formControlName="editeur"
+        />
+        <mat-error
+          *ngIf="
+            this.creationJeuForm.get('editeur')?.touched &&
+            this.creationJeuForm.get('editeur')?.hasError('required')
+          "
+        >
+          L'éditeur est obligatoire
+        </mat-error>
+      </mat-form-field>
+
+      <div class="button">
+        <button type="submit" mat-button [disabled]="!creationJeuForm.valid">
+          Création du jeu
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
