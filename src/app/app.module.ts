@@ -32,6 +32,7 @@ import { HeaderComponent } from './header.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { DetailsJeuComponent } from './details-jeu/details-jeu.component';
 import { ListeJeuCarteComponent } from './liste-jeu-carte.component';
+import { CreationJeuComponent } from './creation-jeu/creation-jeu.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { ListeJeuCarteComponent } from './liste-jeu-carte.component';
     HeaderComponent,
     DetailsJeuComponent,
     ListeJeuCarteComponent,
-    CarteJeuComponent
+    CarteJeuComponent,
+    CreationJeuComponent
   ],
   imports: [
     BrowserModule,

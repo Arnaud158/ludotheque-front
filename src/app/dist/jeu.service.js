@@ -38,15 +38,29 @@ var JeuService = /** @class */ (function () {
         }));
     };
     JeuService.prototype.createJeu = function (jeuRequest) {
+        var _this = this;
         var url = environment_1.environment.apiUrl + "/jeu/";
-        return this.http.post(url, jeuRequest, httpOptions).pipe(rxjs_1.catchError(function (err) {
-            console.log('Erreur http : ', err);
-            return err;
+        return this.http.post(url, {
+            nom: jeuRequest.nom,
+            description: jeuRequest.description,
+            langue: jeuRequest.langue,
+            age_min: jeuRequest.age_min,
+            nombre_joueurs_min: jeuRequest.nombre_joueurs_min,
+            nombre_joueurs_max: jeuRequest.nombre_joueurs_max,
+            duree_partie: jeuRequest.duree_partie,
+            categorie: jeuRequest.categorie,
+            theme: jeuRequest.theme,
+            editeur: jeuRequest.editeur
+        }, httpOptions).pipe(rxjs_1.shareReplay(), rxjs_1.catchError(function (err) {
+            _this.snackbar.open("Enregistrement invalide " + err.error.message, 'Close', {
+                duration: 3000, horizontalPosition: 'right', verticalPosition: 'top'
+            });
+            throw new Error("creation result : " + err);
         }));
     };
-    JeuService.prototype.updateJeu = function (jeuRequest) {
-        var url = environment_1.environment.apiUrl + "/jeu/" + jeuRequest.id;
-        return this.http.put(url, jeuRequest, httpOptions).pipe(rxjs_1.catchError(function (err) {
+    JeuService.prototype.updateJeu = function (jeu) {
+        var url = environment_1.environment.apiUrl + "/jeu/" + jeu.id;
+        return this.http.put(url, jeu, httpOptions).pipe(rxjs_1.catchError(function (err) {
             console.log('Erreur http : ', err);
             return err;
         }));

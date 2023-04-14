@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { JeuService } from './jeu.service';
-import { JeuRequest } from 'src/models/jeu-request';
+import { Jeu } from 'src/models/jeu';
 import {DataSource} from "@angular/cdk/collections";
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -66,7 +66,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class ListeJeuComponent {
 
-  public listeJeu : JeuRequest[] = []
+  public listeJeu : Jeu[] = []
   dataSource: DataSourceAsynchro = new DataSourceAsynchro(this.jeuService);
   lesColonnes = ['nom', 'description', 'langue', 'categorie', 'theme', 'details'];
 
@@ -80,8 +80,8 @@ export class ListeJeuComponent {
 }
 
 
-export class DataSourceAsynchro extends DataSource<JeuRequest> {
-  private jeuSubject = new BehaviorSubject<JeuRequest[]>([]);
+export class DataSourceAsynchro extends DataSource<Jeu> {
+  private jeuSubject = new BehaviorSubject<Jeu[]>([]);
   private nbTri : number;
 
   constructor(private jeuService: JeuService) {
@@ -89,7 +89,7 @@ export class DataSourceAsynchro extends DataSource<JeuRequest> {
     this.nbTri=0;
   }
 
-  connect(): Observable<JeuRequest[]> {
+  connect(): Observable<Jeu[]> {
     return this.jeuSubject.asObservable();
   }
 

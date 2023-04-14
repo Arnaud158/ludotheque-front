@@ -18,6 +18,7 @@ var liste_jeu_component_1 = require("./liste-jeu.component");
 var accueil_component_1 = require("./accueil/accueil.component");
 var details_jeu_component_1 = require("./details-jeu/details-jeu.component");
 var liste_jeu_carte_component_1 = require("./liste-jeu-carte.component");
+var creation_jeu_component_1 = require("./creation-jeu/creation-jeu.component");
 var routes = [
     { path: '', component: accueil_component_1.AccueilComponent },
     { path: 'login', component: login_component_1.LoginComponent },
@@ -25,6 +26,7 @@ var routes = [
     { path: 'apropos', component: a_propos_component_1.AProposComponent },
     { path: 'contact', component: contact_component_1.ContactComponent },
     { path: 'jeux/:id', component: details_jeu_component_1.DetailsJeuComponent },
+    { path: 'creationJeu', component: creation_jeu_component_1.CreationJeuComponent },
     { path: 'jeuxTab', component: liste_jeu_component_1.ListeJeuComponent },
     { path: 'jeuxCarte', component: liste_jeu_carte_component_1.ListeJeuCarteComponent },
     { path: '**', component: page_not_found_component_1.PageNotFoundComponent },
