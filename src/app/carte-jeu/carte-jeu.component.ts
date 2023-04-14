@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { JeuRequest } from 'src/models/jeu-request';
+import { Jeu } from 'src/models/jeu';
 import { JeuService } from '../jeu.service';
 
 @Component({

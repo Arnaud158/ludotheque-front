@@ -22,6 +22,7 @@ import {User} from "../models/user";
           {{service.userValue.avatar}}
           <button mat-raised-button  routerLinkActive="mat-accent"  aria-label="List icon" [routerLink]="['/jeuxTab']">Liste des jeux tableau</button>
           <button mat-raised-button  routerLinkActive="mat-accent"  aria-label="List icon" [routerLink]="['/jeuxCarte']">Liste des jeux carte</button>
+          <button mat-raised-button  routerLinkActive="mat-accent"  aria-label="List icon" [routerLink]="['/creationJeu']">Création d'un jeu</button>
         </div>
       </mat-toolbar>
   `,

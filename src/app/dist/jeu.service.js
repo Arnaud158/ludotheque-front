@@ -44,9 +44,9 @@ var JeuService = /** @class */ (function () {
             return err;
         }));
     };
-    JeuService.prototype.updateJeu = function (jeuRequest) {
-        var url = environment_1.environment.apiUrl + "/jeu/" + jeuRequest.id;
-        return this.http.put(url, jeuRequest, httpOptions).pipe(rxjs_1.catchError(function (err) {
+    JeuService.prototype.updateJeu = function (jeu) {
+        var url = environment_1.environment.apiUrl + "/jeu/" + jeu.id;
+        return this.http.put(url, jeu, httpOptions).pipe(rxjs_1.catchError(function (err) {
             console.log('Erreur http : ', err);
             return err;
         }));

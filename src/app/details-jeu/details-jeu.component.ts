@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {JeuRequest} from "../../models/jeu-request";
 import {ActivatedRoute} from "@angular/router";
 import {JeuService} from "../jeu.service";
 

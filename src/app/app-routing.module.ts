@@ -10,6 +10,7 @@ import {ListeJeuComponent} from "./liste-jeu.component";
 import {AccueilComponent} from "./accueil/accueil.component";
 import {DetailsJeuComponent} from "./details-jeu/details-jeu.component";
 import {ListeJeuCarteComponent} from "./liste-jeu-carte.component";
+import { CreationJeuComponent } from './creation-jeu/creation-jeu.component';
 
 const routes: Routes = [
   {path: '', component:AccueilComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'apropos', component:AProposComponent},
   {path: 'contact', component:ContactComponent},
   {path: 'jeux/:id', component: DetailsJeuComponent},
+  {path: 'creationJeu', component: CreationJeuComponent},
   {path: 'jeuxTab', component:ListeJeuComponent},
   {path: 'jeuxCarte', component:ListeJeuCarteComponent},
   {path: '**', component: PageNotFoundComponent},

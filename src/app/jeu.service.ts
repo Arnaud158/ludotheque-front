@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {environment} from "../../environments/environment";
 import { map,of, shareReplay, tap, catchError, Observable } from 'rxjs';
-import { JeuRequest } from 'src/models/jeu-request';
+import { Jeu } from 'src/models/jeu'
+import { JeuRequest } from 'src/models/jeu-request'
 
 
 const httpOptions = {
@@ -25,10 +26,10 @@ export class JeuService {
   }
 
 
-  getJeux() : Observable<JeuRequest[]> {
+  getJeux() : Observable<Jeu[]> {
     let url = `${environment.apiUrl}/jeu/listeJeu`;
     return this.http.post<any>(url, httpOptions).pipe(
-      map(res => res.Jeux as JeuRequest[]),
+      map(res => res.Jeux as Jeu[]),
       tap(res=> console.log(res)),
       catchError(err => {
         console.log('Erreur http : ', err);
@@ -40,7 +41,7 @@ export class JeuService {
   getJeu(id: number) {
     let url = `${environment.apiUrl}/jeu/${id}`;
     return this.http.get<any>(url, httpOptions).pipe(
-      map(res => res.jeu as JeuRequest[]),
+      map(res => res.jeu as Jeu[]),
       tap(res=> console.log(res)),
       catchError(err => {
         console.log('Erreur http : ', err);
@@ -59,9 +60,9 @@ export class JeuService {
     );
   }
 
-  updateJeu(jeuRequest: JeuRequest) {
-    let url = `${environment.apiUrl}/jeu/${jeuRequest.id}`;
-    return this.http.put<any>(url, jeuRequest, httpOptions).pipe(
+  updateJeu(jeu: Jeu) {
+    let url = `${environment.apiUrl}/jeu/${jeu.id}`;
+    return this.http.put<any>(url, jeu, httpOptions).pipe(
       catchError(err => {
         console.log('Erreur http : ', err);
         return err;
@@ -79,7 +80,7 @@ export class JeuService {
     );
   }
 
-  getJeuxSort(sortNb : number) : Observable<JeuRequest[]> {
+  getJeuxSort(sortNb : number) : Observable<Jeu[]> {
     let url = `${environment.apiUrl}/jeu/listeJeu`;
     if (sortNb%3==0) {
       url = `${environment.apiUrl}/jeu/listeJeu?sort=asc`;
@@ -91,7 +92,7 @@ export class JeuService {
       url = `${environment.apiUrl}/jeu/listeJeu?nombre_joueurs_max=2`;
     }
     return this.http.post<any>(url, httpOptions).pipe(
-      map(res => res.Jeux as JeuRequest[]),
+      map(res => res.Jeux as Jeu[]),
       tap(res=> console.log(res)),
       catchError(err => {
         console.log('Erreur http : ', err);
