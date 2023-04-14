@@ -80,6 +80,6 @@ deploy:
     - nomad validate job.nomad
     - nomad plan job.nomad || if [ $? -eq 255 ]; then exit 255; else echo "success"; fi
     - nomad run job.nomad
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
+#  rules:
+#    - if: '$CI_COMMIT_REF_NAME == "main"'
   when: manual
