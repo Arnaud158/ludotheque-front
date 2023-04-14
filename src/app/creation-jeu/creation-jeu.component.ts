@@ -36,7 +36,7 @@ export class CreationJeuComponent {
     this.jeuService
       .createJeu(<JeuRequest>{ ...this.creationJeuForm.value })
       .pipe(tap(() => this.router.navigate([''])))
-      .subscribe();
+      .subscribe()
   }
 
 

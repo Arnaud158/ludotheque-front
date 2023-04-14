@@ -52,12 +52,26 @@ export class JeuService {
 
   createJeu(jeuRequest: JeuRequest) {
     let url = `${environment.apiUrl}/jeu/`;
-    return this.http.post<any>(url, jeuRequest, httpOptions).pipe(
+    return this.http.post<any>(url, {
+      nom: jeuRequest.nom,
+      description: jeuRequest.description,
+      langue: jeuRequest.langue,
+      age_min:jeuRequest.age_min,
+      nombre_joueurs_min: jeuRequest.nombre_joueurs_min,
+      nombre_joueurs_max:jeuRequest.nombre_joueurs_max,
+      duree_partie:jeuRequest.duree_partie,
+      categorie: jeuRequest.categorie,
+      theme:jeuRequest.theme,
+      editeur:jeuRequest.editeur
+    }, httpOptions).pipe(
+      shareReplay(),
       catchError(err => {
-        console.log('Erreur http : ', err);
-        return err;
+        this.snackbar.open(`Enregistrement invalide ${err.error.message}` , 'Close', {
+          duration: 3000, horizontalPosition: 'right', verticalPosition: 'top'
+        })
+        throw new Error(`creation result : ${err}`)
       })
-    );
+    )
   }
 
   updateJeu(jeu: Jeu) {
