@@ -1,0 +1,18 @@
+# stage 1
+
+FROM node:lts as node
+# FROM dockerhub.priv.iutdelens.ovh/node:lts as node
+WORKDIR /app
+
+RUN npm install -g @angular/cli
+
+COPY package.json .
+RUN npm install
+COPY . .
+RUN ng build --configuration production --optimization false
+
+# stage 2
+
+FROM nginx as runtime
+# FROM dockerhub.priv.iutdelens.ovh/nginx as runtime
+COPY --from=node /app/dist/sae-4-client /usr/share/nginx/html
