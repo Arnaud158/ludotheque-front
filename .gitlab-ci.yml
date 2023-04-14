@@ -1,0 +1,23 @@
+image: dockerhub.priv.iutdelens.ovh/node:latest
+# This folder is cached between builds
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - config
+  - test
+
+config:
+  stage: config
+  tags:
+    - "sae-s4a01"
+  script:
+    - npm install
+
+test:
+  stage: test
+  tags:
+    - "sae-s4a01"
+  script:
+    - node_modules/qunit/bin/qunit.js
