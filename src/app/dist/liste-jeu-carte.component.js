@@ -44,7 +44,7 @@ var ListeJeuCarteComponent = /** @class */ (function () {
     }
     ListeJeuCarteComponent = __decorate([
         core_1.Component({
-            selector: 'app-liste-jeu',
+            selector: 'app-liste-jeu-carte',
             template: "\n    <div class=\"liste-personnes\">\n      <div class=\"div-table-personnes\" *ngFor=\"let jeu of listeJeu\">\n        <mat-card class=\"example-card\">\n          <mat-card-header>\n            <div mat-card-avatar class=\"example-header-image\"></div>\n            <mat-card-title\n              ><h3>{{ jeu.id }}</h3></mat-card-title\n            >\n            <mat-card-subtitle>{{ jeu.nom }}</mat-card-subtitle>\n          </mat-card-header>\n          <mat-card-content>\n            <p>Description : {{ jeu.description }}</p>\n\n            <p>Age minimum : {{ jeu.age_min }}</p>\n            <p>Langues : {{ jeu.langue }}</p>\n\n            <p>Joueurs Minimums : {{ jeu.nombre_joueurs_min }}</p>\n            <p>Joueurs Maximum: {{ jeu.nombre_joueurs_max }}</p>\n            <p>Dur\u00E9e : {{ jeu.duree_partie }}</p>\n          </mat-card-content>\n        </mat-card>\n      </div>\n    </div>\n  ",
             styles: []
         })

@@ -7,7 +7,7 @@ import {User} from "../models/user";
   selector: 'app-header',
   template: `
       <mat-toolbar color="primary" xmlns="http://www.w3.org/1999/html">
-        <span>Le bouton d'or</span>
+        <span>Ludothèque</span>
         <div *ngIf="loggedOut">
             <button mat-raised-button  routerLinkActive="mat-accent"  aria-label="List icon" [routerLink]="['/register']">Register</button>
             <button mat-raised-button  routerLinkActive="mat-accent"  aria-label="List icon" [routerLink]="['/login']">Login</button>
